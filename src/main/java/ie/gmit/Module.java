@@ -3,81 +3,59 @@ package ie.gmit;
 import java.util.*;
 
 public class Module {
-
     private String Name;
-    private String DOB;
-    private int Age;
     private String ID;
+    private ArrayList<Student> Students;
 
 
-    private Programme Programme;public Student(String name, String dob, int age)
-    {
-        this.Name = name;
-        this.DOB = dob;
-        this.Age = age;
-        this.ID = createId();
-
+    public Module(String name, String id){
+        Name = name;
+        ID = id;
+        this.Students = new ArrayList();
     }
 
-    //creating the username by concatinating name and age, removing spaces and making it all lower case
-    public String getUsername(){
-        return this.getName().replaceAll("\\s","").toLowerCase() + this.getAge();
-    }
 
     //getters and setters
-    public String getName() {
+    public void setName(String name){
+        Name = name;
+    }
+
+    public String getName(){
         return Name;
     }
 
-
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setID(String id){
+        ID = id;
     }
-
-
-    public String getDOB() {
-        return DOB;
-    }
-
-
-    public void setDOB(String DOB) {
-        this.DOB = DOB;
-    }
-
-
-    public int getAge() {
-        return Age;
-    }
-
-
-    public void setAge(int Age) {
-        this.Age = Age;
-    }
-
-
-    public String getID() {
+    public String getID(){
         return ID;
     }
 
-    public Programme getProgramme() {
-        return Programme;
+
+    public ArrayList<Student> getStudents() {
+        return Students;
     }
 
 
-    public void setProgramme(Programme Programme) {
-        this.Programme = Programme;
+    public void setStudents(ArrayList<Student> Students) {
+        this.Students = Students;
     }
 
-    //creating a unique student ID
-    public String createId()
-    {
-        UUID uuid = UUID.randomUUID();
-        return uuid.toString();
+    //methods to add and delete students from the arraylist
+    public void addStudent(Student s){
+        Students.add(s);
+    }
+
+    public void deleteStudent(Student s){
+        Students.remove(s);
     }
 
     @Override
     public String toString(){
-        return "Name: " + this.Name + " Age: " + this.Age  + " ID: " + this.ID + " Username: " + this.getUsername();
+        return "Module Name: " + Name + " Module ID: " + ID;
     }
 
+
 }
+
+
